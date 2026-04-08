@@ -18,6 +18,12 @@ RUN Rscript -e 'setwd("/srv/shiny-server/");renv::restore();'
 RUN rm -rf /srv/shiny-server/*
 COPY /03_App/ /srv/shiny-server/
 
+# Remove data files so they can be mounted at runtime
+RUN rm -rf /srv/shiny-server/data \
+       /srv/shiny-server/*.h5 \
+       /srv/shiny-server/*.rds
+
+
 # Ensure that the expected user is present in the container
 RUN if id shiny &>/dev/null && [ "$(id -u shiny)" -ne 999 ]; then \
         userdel -r shiny; \
