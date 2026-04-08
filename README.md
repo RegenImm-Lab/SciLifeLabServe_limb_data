@@ -102,3 +102,18 @@ This project uses renv to manage R package dependencies and ensure reproducibili
 The objects necessary for running the app locally are not included in this repo as the file sizes are too large. 
 
 ```
+
+## Dockerfile and Image
+
+```
+To containerize the app Docker was used. Docker version 29.3.1, build c2be9cc was installed for the desktop and a Docker image was created from the project root with the manually generated Dockerfile (edited from SciLifeLab: https://serve.scilifelab.se/docs/application-hosting/shiny/#wiki-toc-step-2-create-a-dockerfile-for-your-app).
+
+```
+
+```bash
+
+# run from the project root (this will only include what is explicitly mentioned in the dockerfile)
+docker build --platform linux/amd64 -t shiny-app:v1 .
+
+
+```
