@@ -108,12 +108,30 @@ The objects necessary for running the app locally are not included in this repo 
 ```
 To containerize the app Docker was used. Docker version 29.3.1, build c2be9cc was installed for the desktop and a Docker image was created from the project root with the manually generated Dockerfile (edited from SciLifeLab: https://serve.scilifelab.se/docs/application-hosting/shiny/#wiki-toc-step-2-create-a-dockerfile-for-your-app).
 
+A .dockerignore is included to omit data files from the image - the data is instead mounted on SciLifeLab and is pulled at run time.
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/xbs4m4jelbnru6juzb51tp9qh
+IMAGE                  ID             DISK USAGE   CONTENT SIZE   EXTRA
+boleche/shiny-app:v2   4ed5c14e7308       1.69GB         1.69GB 
+
+To manage automatic changes to the image upon script edits - a .github/workflows/" " file is included. 
+
 ```
 
 ```bash
+#!/usr/bin/env bash
 
 # run from the project root (this will only include what is explicitly mentioned in the dockerfile)
-docker build --platform linux/amd64 -t shiny-app:v1 .
+# no cache to make sure previous build caches are not embed in the image
+docker build --platform linux/amd64 --no-cache -t boleche/shiny-app:v2 .
 
+# check image
+docker images -a                                                        
+# IMAGE                  ID             DISK USAGE   CONTENT SIZE   EXTRA
+# boleche/shiny-app:v2   4ed5c14e7308       1.69GB         1.69GB 
+
+# check run 
+docker run --rm -p 3838:3838 \                                          
+  -v $(pwd)/03_App:/srv/shiny-server \
+  boleche/shiny-app:v2
 
 ```
