@@ -1,6 +1,6 @@
 # Ignore data files (these are mounted at runtime)
-*.h5
-*.rds
+03_App/*.rds
+03_App/*.h5
 
 # MacOS system files
 .DS_Store

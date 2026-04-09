@@ -4,10 +4,19 @@ FROM rocker/shiny:4.5.2
 # 1. Clean the directory first
 RUN rm -rf /srv/shiny-server/*
 
-# General updates
+# General updates and dependencies
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y git libxml2-dev libmagick++-dev libssl-dev libharfbuzz-dev libfribidi-dev && \
+    apt-get install -y \
+        git \
+        libxml2-dev \
+        libmagick++-dev \
+        libssl-dev \
+        libharfbuzz-dev \
+        libfribidi-dev \
+        libhdf5-dev \
+        build-essential \
+        cmake && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
