@@ -1,2 +1,15 @@
+# Ignore data files (these are mounted at runtime)
 *.h5
 *.rds
+
+# MacOS system files
+.DS_Store
+
+# R temporary files / history
+*.Rhistory
+*.RData
+.Rproj.user/
+
+# Any logs or temporary outputs
+*.log
+tmp/
