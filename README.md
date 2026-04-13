@@ -149,8 +149,6 @@ To containerize the app Docker was used. Docker version 29.3.1, build c2be9cc wa
 
 A .dockerignore is included to omit data files from the image - the data is instead mounted on SciLifeLab and is pulled at run time.
 
-A GitHub Actions workflow is included to automate Docker image builds and updates.
-
 The image is pushed to the public Docker Hub repo at: docker.io/boleche/shiny-app:v4
 
 *** note: the image must remain public for the app to run on SciLifeLab ***
@@ -176,6 +174,17 @@ docker run --rm -p 3838:3838 \
 docker push boleche/shiny-app:v4
 
 ```
+
+
+## App Maintenance
+
+```
+As long as the Docker image is published publically - the app should continue to run in SciLifeLab. 
+
+If app code is changed and the app needs to be rebuilt with different parameters: the docker image needs to be rebuilt and pushed to Docker Hub with a new tag (ex. v5). This new image should then be updated in the SciLifeLab app settings. The app running data will also need to be replaced in the SciLifeLab data mount. 
+
+```
+
 
 ## References
 
