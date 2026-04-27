@@ -12,7 +12,7 @@ library(shiny)
 ######################################################################
 
 # read in the first Seurat object 
-merged <- readRDS("../01_PreProcessing/20260325.merged.edit.rds")
+merged <- readRDS("../01_PreProcessing/20260421.merged.edit.rds")
 
 # create the shinycell config
 Conf_merged <- createConfig(merged)
@@ -33,7 +33,7 @@ print("Merged config created.")
 ######################################################################
 
 # read in the second Seurat object 
-immune <- readRDS("../01_PreProcessing/20260325.immune_filtered.edit.rds")
+immune <- readRDS("../01_PreProcessing/20260421.immune_filtered.edit.rds")
 
 # create the shinycell config
 Conf_immune <- createConfig(immune)
