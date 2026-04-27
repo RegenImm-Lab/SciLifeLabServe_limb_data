@@ -97,14 +97,14 @@ A .dockerignore is included to omit data files from the image - the data is inst
 
 A GitHub Actions workflow is included to automate Docker image builds and updates.
 
-The image is pushed to the public Docker Hub repo at: docker.io/boleche/shiny-app:v5
+The image is pushed to the public Docker Hub repo at: docker.io/regenimmuno/limb-shiny-app:latest or $TAG
 
 *** note: the image must remain public for the app to run on SciLifeLab ***
 
 To update / maintain the app: 
 
 1. If modifications are made to the original seurat objects or the app running objects (ie. via "Seurat_EditsV2.R" or "makeShinyAppV4.R"): the data mounted in SciLifeLab must be manually swapped for the edited .rds and .h5 files. 
-2. If modifications are made to the app running code (ie. "server.R" or "ui.R"): the code changes should be pushed to git hub. GitHub Actions should automatically update the Docker image and push it to Docker Hub. In the case this doesn't function properly - one must manually push changes and update the new image path in SciLifeLab. 
+2. If modifications are made to the app running code (ie. "server.R" or "ui.R") or the environment ("renv.lock"): the code changes should be pushed to GitHub. GitHub Actions should automatically update the Docker image and push it to Docker Hub with two tags: one by version and one labeled "latest". In the case this doesn't function properly - one must manually rebuild/push the image as shown below and update the new image path in SciLifeLab. 
 
 
 ```
@@ -114,18 +114,13 @@ To update / maintain the app:
 
 # run from the project root (this will only include what is explicitly mentioned in the Dockerfile)
 # build image (use --no-cache only if needed)
-docker build --platform linux/amd64 -t boleche/shiny-app:v4 .
+docker build --platform linux/amd64 -t regenimmuno/limb-shiny-app:v1 .
 
 # check image
 docker images -a                                                        
 
-# check run 
-docker run --rm -p 3838:3838 \                                          
-  -v $(pwd)/03_App:/srv/shiny-server \
-  boleche/shiny-app:v4
-
 # push to Docker Hub 
-docker push boleche/shiny-app:v4
+docker push regenimmuno/limb-shiny-app:v1
 
 ```
 
