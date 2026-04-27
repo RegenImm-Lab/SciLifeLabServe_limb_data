@@ -129,6 +129,17 @@ docker push boleche/shiny-app:v4
 
 ```
 
+
+## App Maintenance
+
+```
+As long as the Docker image is published publically - the app should continue to run in SciLifeLab. 
+
+If app code is changed and the app needs to be rebuilt with different parameters: the docker image needs to be rebuilt and pushed to Docker Hub with a new tag (ex. v5). This new image should then be updated in the SciLifeLab app settings. The app running data will also need to be replaced in the SciLifeLab data mount. 
+
+```
+
+
 ## References
 
 ```
