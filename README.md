@@ -99,13 +99,7 @@ A GitHub Actions workflow is included to automate Docker image builds and update
 
 The image is pushed to the public Docker Hub repo at: docker.io/regenimmuno/limb-shiny-app:latest or $TAG
 
-*** note: the image must remain public for the app to run on SciLifeLab ***
-
-To update / maintain the app: 
-
-1. If modifications are made to the original seurat objects or the app running objects (ie. via "Seurat_EditsV2.R" or "makeShinyAppV4.R"): the data mounted in SciLifeLab must be manually swapped for the edited .rds and .h5 files. 
-2. If modifications are made to the app running code (ie. "server.R" or "ui.R") or the environment ("renv.lock"): the code changes should be pushed to GitHub. GitHub Actions should automatically update the Docker image and push it to Docker Hub with two tags: one by version and one labeled "latest". In the case this doesn't function properly - one must manually rebuild/push the image as shown below and update the new image path in SciLifeLab. 
-
+*** note: the image must remain public for the app to run on SciLifeLab *** 
 
 ```
 
@@ -130,7 +124,10 @@ docker push regenimmuno/limb-shiny-app:v1
 ```
 As long as the Docker image is published publically - the app should continue to run in SciLifeLab. 
 
-If app code is changed and the app needs to be rebuilt with different parameters: the docker image needs to be rebuilt and pushed to Docker Hub with a new tag (ex. v5). This new image should then be updated in the SciLifeLab app settings. The app running data will also need to be replaced in the SciLifeLab data mount. 
+To update / maintain the app: 
+
+1. If modifications are made to the original seurat objects or the app running objects (ie. via "Seurat_EditsV2.R" or "makeShinyAppV4.R"): the data mounted in SciLifeLab must be manually swapped for the edited .rds and .h5 files. 
+2. If modifications are made to the app running code (ie. "server.R" or "ui.R") or the environment ("renv.lock"): the code changes should be pushed to GitHub. GitHub Actions should automatically update the Docker image and push it to Docker Hub with two tags: one by version and one labeled "latest". In the case this doesn't function properly - one must manually rebuild/push the image as shown below and update the new image path in SciLifeLab.
 
 ```
 
