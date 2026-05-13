@@ -1,4 +1,3 @@
-
 #########################################################################
 # This script has been modified from the the auto-generated script made by "makeShinyAppV4.R".
 # The edits contained in this script support the following new 
@@ -37,6 +36,7 @@ immune_objdef  = readRDS(paste0(data_path,"immune_objdef.rds"))
 #########################################################################
 #########################################################################
 
+
 ### Start server code 
 shinyUI(fluidPage( 
   ### HTML formatting of error messages 
@@ -45,7 +45,7 @@ shinyUI(fluidPage(
   list(tags$style(HTML(".navbar-default .navbar-nav { font-weight: bold; font-size: 16px; }"))), 
   
   ### Page title 
-  titlePanel("Axolotl Blastema Transcriptomic Environment Explorer"), 
+  titlePanel("Single-Cell RNA-seq Time Course of Axolotl Limb Regeneration"), 
   navbarPage( 
     NULL, 
 navbarMenu("All Cells",### Tab1.a1: Zoom-enable Dimred 
@@ -606,8 +606,6 @@ tabPanel(
   )    # End of fluidRow (4 space) 
 )      # End of tab (2 space) 
 , 
-
-
 #############################################################################################################
 # Manual Edit 02
 # Cell Type Mode addition to heatmap/bubblepot. 
@@ -710,8 +708,8 @@ tabPanel(
         )
       ),
 ############################################################################################################
-############################################################################################################
-      br(), br(),
+############################################################################################################ 
+      br(), br(), 
       actionButton("merged_objb3tog", "Toggle graphics controls"), 
       conditionalPanel( 
         condition = "input.merged_objb3tog % 2 == 1", 
@@ -1299,7 +1297,6 @@ tabPanel(
   )    # End of fluidRow (4 space) 
 )      # End of tab (2 space) 
 , 
-
 #############################################################################################################
 # Manual Edit 02 - Immune subset
 # Cell Type Mode addition to heatmap/bubblepot. 
@@ -1398,8 +1395,8 @@ tabPanel(
         )
       ),
 #############################################################################################################
-#############################################################################################################
-      br(), br(),
+############################################################################################################# 
+      br(), br(), 
       actionButton("immune_objb3tog", "Toggle graphics controls"), 
       conditionalPanel( 
         condition = "input.immune_objb3tog % 2 == 1", 
@@ -1430,7 +1427,7 @@ tabPanel(
 ), 
 
 br(), 
-  p("Data source: Leigh et al. (2018) Transcriptomic landscape of the blastema niche in regenerating adult axolotl limbs at single-cell resolution. Nature Communications. https://doi.org/10.1038/s41467-018-07604-0 | Shiny app developed with ShinyCell2.", style = "font-size: 125%;"), 
+  p(strong("Reference: "),strong("Adaptive immunity is dispensable for salamander appendage regeneration, "),"Umeano, C. H. et al. (2026). ","(bioRxiv. https://doi.org/10.64898/2026.04.13.718117) ",style = "font-size: 125%;"), 
   p(em("This webpage was made using "), a("ShinyCell2", 
      href = "https://github.com/the-ouyang-lab/ShinyCell2",target="_blank")), 
   br(),br(),br(),br(),br()  
