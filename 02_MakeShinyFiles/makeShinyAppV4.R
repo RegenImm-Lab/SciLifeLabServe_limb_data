@@ -132,12 +132,18 @@ saveRDS(immune_objdimr, "../03_App/immune_objdimr.rds")
 # 005: Creating ShinyApp
 ######################################################################
 
+citation = list(
+  volume = "Adaptive immunity is dispensable for salamander appendage regeneration", 
+  page = "Umeano, C. H. et al. (2026).", 
+  year = "bioRxiv. https://doi.org/10.64898/2026.04.13.718117")
+
 makeShinyCodes(
-  shiny.title = "Single-Cell RNA-seq Time Course of Axolotl Limb Regeneration", 
-  shiny.footnotes = "Data source: Leigh et al. (2018) Transcriptomic landscape of the blastema niche in regenerating adult axolotl limbs at single-cell resolution. Nature Communications. https://doi.org/10.1038/s41467-018-07604-0 | Shiny app developed with ShinyCell2.", 
+  shiny.title = "Single-Cell RNA-seq Time Course of Axolotl Limb Regeneration",
+  shiny.footnotes = citation,
   shiny.prefix = c("merged_obj", "immune_obj"),
   shiny.headers = c("All Cells", "Immune Cells"),
-  shiny.dir = shiny_dir)
+  shiny.dir = shiny_dir
+)
 
 print("ShinyApp built.")
 
