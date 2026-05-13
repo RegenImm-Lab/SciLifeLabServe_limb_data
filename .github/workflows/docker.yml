@@ -28,11 +28,17 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Tag as latest
+      - name: Tag as scilifelabserve_limb_data latest
         run: docker tag ${{ secrets.DOCKERHUB_USERNAME }}/limb-shiny-app:$TAG ${{ secrets.DOCKERHUB_USERNAME }}/scilifelabserve_limb_data:latest
+
+      - name: Tag as limb-shiny-app latest
+        run: docker tag ${{ secrets.DOCKERHUB_USERNAME }}/limb-shiny-app:$TAG ${{ secrets.DOCKERHUB_USERNAME }}/limb-shiny-app:latest
 
       - name: Push timestamp tag
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/limb-shiny-app:$TAG
 
-      - name: Push latest
+      - name: Push limb-shiny-app latest
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/limb-shiny-app:latest
+
+      - name: Push scilifelabserve_limb_data latest
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/scilifelabserve_limb_data:latest
