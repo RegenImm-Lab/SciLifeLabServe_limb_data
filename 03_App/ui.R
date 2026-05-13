@@ -39,7 +39,7 @@ immune_objdef  = readRDS(paste0(data_path,"immune_objdef.rds"))
 
 ### Start server code: 
 shinyUI(fluidPage( 
-  ### HTML formatting of error messages 
+  ### HTML formatting of error messages #
    
   tags$head(tags$style(HTML(".shiny-output-error-validation {color: red; font-weight: bold;}"))), 
   list(tags$style(HTML(".navbar-default .navbar-nav { font-weight: bold; font-size: 16px; }"))), 
